@@ -2,6 +2,12 @@
 description: General development guidelines — building, testing, and available tools
 ---
 
+# Knowledge Boundaries
+
+Do not assume knowledge of framework APIs, language features, or platform behavior. Always validate against official documentation, project references, or available tools (e.g., MCP servers, language servers, documentation sites) before writing code that depends on specific behavior. When uncertain, look it up — do not guess.
+
+Use `/reference-lookup` to find authoritative patterns when working with unfamiliar APIs or frameworks.
+
 # Build & Test
 
 Always build and test the project before returning results to the user. The build must complete with zero errors. If errors are reported, resolve them and rebuild until clean before responding.

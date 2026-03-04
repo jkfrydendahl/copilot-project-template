@@ -26,6 +26,7 @@ The skill takes requirements as plain text. If the user does not provide text in
 During the workflow (Phases 1-4), all deliverables are presented as **normal rendered Markdown** so the user can read them inline. Render Mermaid diagrams visually when the environment supports it; otherwise present as fenced code blocks.
 
 Only **after Phase 4 approval**, a single **4-backtick fenced code block** is produced containing **all three deliverables** (Business Rules + Architecture + Test Plan) ready for the user to copy into their work tracking tool. Inside this final code block, Mermaid diagrams use standard `` ```mermaid `` fences (for portability in the target tool).
+
 | Deliverable | During Workflow | Final Combined Output |
 |-------------|-----------------|----------------------|
 | Business Rules Analysis | Normal Markdown (Phase 2) | Included |
