@@ -18,33 +18,28 @@ description: "Requirements refinement workflow. Produce architecture + test plan
 
 ## Input
 
-The skill takes requirements as plain text. If the user does not provide text inline, use `ask_questions` to request:
+The skill takes requirements as plain text. If the user does not provide text inline, ask for:
 1. **Requirements** (full requirements text — free-form input)
 
 ## Output
 
-During the workflow (Phases 1-4), all deliverables are presented as **normal rendered Markdown** so the user can read them inline. Mermaid diagrams are rendered visually using the `renderMermaidDiagram` tool instead of fenced code blocks.
+During the workflow (Phases 1-4), all deliverables are presented as **normal rendered Markdown** so the user can read them inline. Render Mermaid diagrams visually when the environment supports it; otherwise present as fenced code blocks.
 
 Only **after Phase 4 approval**, a single **4-backtick fenced code block** is produced containing **all three deliverables** (Business Rules + Architecture + Test Plan) ready for the user to copy into their work tracking tool. Inside this final code block, Mermaid diagrams use standard `` ```mermaid `` fences (for portability in the target tool).
-
 | Deliverable | During Workflow | Final Combined Output |
 |-------------|-----------------|----------------------|
 | Business Rules Analysis | Normal Markdown (Phase 2) | Included |
-| Architecture | Normal Markdown + `renderMermaidDiagram` (Phase 3) | Included (with `` ```mermaid `` fences) |
+| Architecture | Normal Markdown + Mermaid diagrams (Phase 3) | Included (with `` ```mermaid `` fences) |
 | Test Plan | Normal Markdown (Phase 4) | Included |
 
 ## Exploration & Research
 
-**Always prefer subagents** for exploration and research tasks. Subagents run autonomously and return consolidated results, keeping the main workflow focused.
+**Use whatever search and exploration tools your environment provides.** The key principles:
 
-| Task | Tool | When |
-|------|------|------|
-| Codebase search (files, patterns, symbols) | `search_subagent` | Any codebase exploration |
-| Complex multi-step research | `runSubagent` | Reference lookups, multi-file analysis, pattern discovery |
-| Targeted text/regex search | `grep_search` | Quick single-pattern checks only |
-| Render Mermaid diagrams | `renderMermaidDiagram` | Architecture diagrams during workflow (Phase 3) |
-
-**Parallelize** independent research tasks by launching multiple subagents simultaneously.
+- **Parallelize** independent searches — don't explore sequentially when you can search multiple areas simultaneously
+- **Delegate** complex research to subagents when available; otherwise perform multi-file analysis directly
+- **Render** Mermaid diagrams visually when the environment supports it; otherwise present as fenced code blocks
+- **Prefer** broad codebase search over targeted text search for discovery tasks
 
 ## Phase Overview
 
@@ -65,11 +60,11 @@ Only **after Phase 4 approval**, a single **4-backtick fenced code block** is pr
 | Pattern | Type | Action |
 |---------|------|--------|
 | `/refine-requirements <text>` | Inline text | Start Phase 1 with provided text |
-| `/refine-requirements` (no argument) | No input | Prompt user for requirements text via `ask_questions`, then start Phase 1 |
+| `/refine-requirements` (no argument) | No input | Prompt user for requirements text, then start Phase 1 |
 
 ### Starting a Refinement
 
-1. Get work item text from user (inline or prompted via `ask_questions`)
+1. Get work item text from user (inline or prompted)
 2. Create task list for 4 phases
 3. Begin [Phase 1](./phases/phase-1-discovery.md)
 

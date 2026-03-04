@@ -2,7 +2,7 @@
 
 This template shows the Markdown structure used for the **final combined output** — a single code block produced at the end of Phase 4 containing all three deliverables (Business Rules, Architecture, Test Plan).
 
-> **During the workflow** (Phases 1-4), all output is presented as normal rendered Markdown. Mermaid diagrams are rendered visually using `renderMermaidDiagram`. This template is used **only** for the final combined code block.
+> **During the workflow** (Phases 1-4), all output is presented as normal rendered Markdown. Mermaid diagrams are rendered visually when the environment supports it. This template is used **only** for the final combined code block.
 
 ---
 
@@ -146,5 +146,5 @@ flowchart TD
 3. **Naming conventions** — Follow the project's existing naming patterns
 4. **Design decisions** — Always include rationale, not just the choice
 5. **Test steps** — Keep steps explicit and evidence targets clear
-6. **Mermaid diagrams** — In the final code block, use fenced `` ```mermaid `` blocks. During the workflow, use `renderMermaidDiagram` instead
+6. **Mermaid diagrams** — In the final code block, use fenced `` ```mermaid `` blocks. During the workflow, render visually when the environment supports it; otherwise use fenced code blocks
 7. **Single code block** — Only the final combined output at the end of Phase 4 uses a code block fence

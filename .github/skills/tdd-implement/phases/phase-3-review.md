@@ -78,10 +78,7 @@ Add a PR comment with implementation summary:
 
 After marking the PR ready, suggest:
 
-> For deeper review coverage with multiple AI models, run:
-> ```
-> /review using codex 5.3, opus 4.6, gemini 3 pro
-> ```
+> For deeper review coverage with multiple AI models, run the `/review` command with the models listed in `.github/config/review-models.md`.
 
 ## Workflow Complete
 

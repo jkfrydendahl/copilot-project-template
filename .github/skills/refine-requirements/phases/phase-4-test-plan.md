@@ -6,18 +6,18 @@
 
 ### 1. Consult Testing Guidance
 
-Use `runSubagent` to gather test strategy based on:
+Gather test strategy based on:
 - Feature description
 - Architecture from Phase 3
 - Business Rules from Phase 2
 
 ### 2. Get Pattern Knowledge
 
-Use `runSubagent` to review testing patterns relevant to the project (unit tests, integration tests, end-to-end tests, contract tests, manual verification).
+Review testing patterns relevant to the project (unit tests, integration tests, end-to-end tests, contract tests, manual verification).
 
 ### 3. Find Existing Patterns
 
-Use `search_subagent` to search existing features for similar test patterns, fixtures, helpers, or testing utilities used in the project.
+Search the codebase for existing test patterns, fixtures, helpers, or testing utilities.
 
 ### 4. Apply ZOMBIES Checklist
 
@@ -85,10 +85,10 @@ Present the Test Plan as **normal rendered Markdown** (not wrapped in a code blo
 
 ## User Checkpoint
 
-After presenting the Test Plan as normal rendered Markdown, use `ask_questions` to confirm:
+After presenting the Test Plan as normal rendered Markdown, ask the user to confirm:
 
 - **Summary message**: "Test plan complete with {N} scenarios covering {M} business rules. Quality gate verified."
-- **`ask_questions`** (header: `Phase 4`, question: "Test plan output ready. How would you like to proceed?"):
+- **Ask the user** (header: `Phase 4`, question: "Test plan output ready. How would you like to proceed?"):
   - **Approve & finish** (recommended) — Planning workflow complete, output ready to paste
   - **Revise test plan** — User provides feedback, regenerate output
 
@@ -119,8 +119,5 @@ After the final output, remind the user of the two-step review process:
 
 > **After implementation**, Copilot will automatically self-review the changes against the project's review criteria and fix any critical/warning issues before presenting the work.
 >
-> For deeper coverage with multiple AI models, run:
-> ```
-> /review using codex 5.3, opus 4.6, gemini 3 pro
-> ```
+> For deeper coverage with multiple AI models, run the `/review` command with the models listed in `.github/config/review-models.md`.
 > Then ask Copilot to synthesize the findings into a prioritized report.

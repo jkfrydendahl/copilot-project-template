@@ -5,7 +5,7 @@ description: "Synthesize findings from a multi-model code review into a consolid
 
 # Review Synthesis
 
-After running a multi-model code review (`/review using codex 5.3, opus 4.6, gemini 3 pro`), use this skill to synthesize the independent findings into a single prioritized report.
+After running a multi-model code review using the models configured in `.github/config/review-models.md`, use this skill to synthesize the independent findings into a single prioritized report.
 
 > **The review criteria and severity levels are defined in `.github/instructions/code-review.instructions.md`** — they are applied automatically during each `/review` pass. This skill handles only the **synthesis** of results across models.
 
@@ -18,11 +18,7 @@ Different models have different strengths, blind spots, and reasoning styles. Ra
 
 ## Invocation
 
-Run this skill after completing a multi-model review:
-
-```
-/review using codex 5.3, opus 4.6, gemini 3 pro
-```
+Run this skill after completing a multi-model review. Use the models and `/review` command from `.github/config/review-models.md`.
 
 Then ask Copilot to synthesize:
 
@@ -32,11 +28,7 @@ Synthesize the review findings using the code-review-synthesis protocol.
 
 ## Review Models
 
-| Model | ID |
-|-------|----|
-| **GPT-5.3-Codex** | `gpt-5.3-codex` |
-| **Claude Opus 4.6** | `claude-opus-4.6` |
-| **Gemini 3 Pro** | `gemini-3-pro-preview` |
+See `.github/config/review-models.md` for the current model list and review command.
 
 ## Synthesis Protocol
 

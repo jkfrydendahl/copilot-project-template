@@ -6,7 +6,7 @@
 
 ### 1. Consult Reference Guidance
 
-Use `runSubagent` to gather architecture guidance based on:
+Gather architecture guidance based on:
 - Feature description
 - Business Rules from Phase 2
 - Constraints from clarifications
@@ -14,11 +14,11 @@ Use `runSubagent` to gather architecture guidance based on:
 
 ### 2. Get Pattern Guidance
 
-Use `runSubagent` to review design patterns relevant to the feature: facade, repository, strategy, observer, middleware pipeline, event-driven, etc.
+Research design patterns relevant to the feature: facade, repository, strategy, observer, middleware pipeline, event-driven, etc.
 
 ### 3. Analyze Existing Patterns
 
-Use `search_subagent` to search codebase for existing architectural patterns (module structure, dependency injection, layering conventions, public/internal APIs).
+Search the codebase for existing architectural patterns (module structure, dependency injection, layering conventions, public/internal APIs).
 
 ### 4. Determine Architecture Criteria
 
@@ -51,12 +51,12 @@ Produce all of the following for the Minimal approach:
 1. **Component Table** — List every component (new and modified) with columns: Type, Name, Responsibility, Key Interactions
 2. **Responsibility Assignments** — For each business rule from Phase 2, state which component handles it and how
 3. **Integration Flow** — Which existing hooks/events are used, which new ones (if any) are created
-4. **Architecture Diagram** — Mermaid flowchart showing component relationships, data flow, and integration points. **Render visually** using the `renderMermaidDiagram` tool (pass the Mermaid markup and a descriptive title). Do NOT output as a fenced code block.
+4. **Architecture Diagram** — Mermaid flowchart showing component relationships, data flow, and integration points. Render visually when the environment supports it; otherwise present as a fenced code block.
 5. **Design Decisions** — Key choices with rationale (patterns used, API design, error handling, etc.)
 
 #### 6b. Clean/Patterned Design
 
-Produce the same 5 deliverables for the Clean/Patterned approach. Use `renderMermaidDiagram` for the architecture diagram here as well.
+Produce the same 5 deliverables for the Clean/Patterned approach.
 
 > **Important**: Both designs must be detailed enough that a developer could start implementation from either one. Placeholder values like "X components" or "..." are not acceptable.
 
@@ -87,33 +87,33 @@ Default guidance if user is unavailable:
 
 ### 9. Output Selected Architecture
 
-After the user selects, present the **selected** design as **normal rendered Markdown** (not wrapped in a code block). Use the Output Template (linked in SKILL.md references) with Markdown tables and headings. Mermaid diagrams must be rendered visually using the `renderMermaidDiagram` tool.
+After the user selects, present the **selected** design as **normal rendered Markdown** (not wrapped in a code block). Use the Output Template (linked in SKILL.md references) with Markdown tables and headings. Render Mermaid diagrams visually when the environment supports it; otherwise present as fenced code blocks.
 
 The user will read this inline; it will be included in the final combined output at the end of Phase 4.
 
 The output is the selected design from step 6 — do not recreate it from scratch. Expand to full detail if needed:
 - Pattern Applied
 - Component Overview table (with names, responsibilities, interactions)
-- Architecture Diagram (rendered via `renderMermaidDiagram`)
+- Architecture Diagram (rendered visually when supported; otherwise as fenced code block)
 - Design Decisions with rationale
 
 ## User Checkpoints
 
-Two gates in this phase, both using `ask_questions`:
+Two gates in this phase:
 
 ### Gate 1: Select approach
 
-After presenting **both designs and the comparison table**, use `ask_questions`:
+After presenting **both designs and the comparison table**, ask the user:
 
-- **`ask_questions`** (header: `Approach`, question: "I've designed both architectures above. Which approach do you prefer?"):
+- **Ask the user** (header: `Approach`, question: "I've designed both architectures above. Which approach do you prefer?"):
   - **Clean/Patterned** (recommended) — Better structure, extensibility, more testable
   - **Minimal** — Fewer components, faster implementation, lower risk
 
 ### Gate 2: Approve architecture output
 
-After presenting the selected Architecture as normal rendered Markdown, use `ask_questions`:
+After presenting the selected Architecture as normal rendered Markdown, ask the user:
 
-- **`ask_questions`** (header: `Phase 3`, question: "Architecture output ready. How would you like to proceed?"):
+- **Ask the user** (header: `Phase 3`, question: "Architecture output ready. How would you like to proceed?"):
   - **Approve & proceed to Test Plan** (recommended) — Continue to Phase 4
   - **Revise architecture** — User provides feedback, regenerate output
 

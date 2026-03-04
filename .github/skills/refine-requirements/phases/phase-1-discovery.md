@@ -4,9 +4,9 @@
 
 ## Actions
 
-1. **Load project context**: Use `search_subagent` or `runSubagent` to review repository conventions (README, CONTRIBUTING, docs, internal guidelines). Parallelize multiple searches when looking for different types of context.
+1. **Load project context**: Review repository conventions (README, CONTRIBUTING, docs, internal guidelines). Parallelize multiple searches when looking for different types of context.
 
-2. **Gather requirements**: If requirements text was not provided inline, use `ask_questions` to request:
+2. **Gather requirements**: If requirements text was not provided inline, ask the user for:
    - **Requirements**: Full requirements text (free-form input)
 
 3. **Identify project areas affected**:
@@ -42,7 +42,7 @@
    - [ ] Configuration / environment variables
    - [ ] Tests
 
-6. **Initial file discovery** (optional): Use `search_subagent` to find files matching feature keywords. Launch parallel searches for different keyword groups.
+6. **Initial file discovery** (optional): Search for files matching feature keywords. Launch parallel searches for different keyword groups.
 
 7. **Present summary**:
    - Key requirements summary
@@ -52,10 +52,10 @@
 
 ## User Checkpoint
 
-Present the discovery summary, then use `ask_questions` to gate the transition:
+Present the discovery summary, then ask the user to gate the transition:
 
 - **Summary message**: "I've analyzed the requirements in context of the repository. Here's my understanding: [summary]. Affected areas: [list]. Technical domains: [list]."
-- **`ask_questions`** (header: `Phase 1`, question: "Discovery complete. How would you like to proceed?"):
+- **Ask the user** (header: `Phase 1`, question: "Discovery complete. How would you like to proceed?"):
   - **Proceed to Exploration** (recommended) — Continue to Phase 2
   - **Revise summary** — User provides corrections, redo summary
 

@@ -1,6 +1,6 @@
 # Copilot Project Template
 
-A language-agnostic GitHub Copilot framework template you can drop into any development project. Provides structured commit conventions, coding guidelines, and reusable Copilot skills for requirements refinement and reference lookups.
+A language-agnostic GitHub Copilot framework template you can drop into any development project. Provides structured workflows for requirements planning, TDD implementation, multi-model code review, and commit conventions — all tool-agnostic and customizable.
 
 ## Quick Start
 
@@ -17,12 +17,20 @@ cp -r copilot-project-template/.github your-project/
 
 Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) when creating new repositories.
 
+### After Copying
+
+1. **Configure reference sources** — Edit `.github/skills/reference-lookup/references/sources.md` with your project's reference repos, docs, and API specs. The file ships with examples only.
+2. **Review model configuration** — Check `.github/config/review-models.md` and update the AI models if newer ones are available.
+3. **Add language-specific instructions** (optional) — Create files like `typescript.instructions.md` or `python.instructions.md` in `.github/instructions/` for language-specific guidelines.
+
 ## What's Included
 
 ```
 .copilot-commit-message-instructions.md    # Commit message conventions
 .github/
 ├── copilot-instructions.md                # 🔀 Top-level router — ties everything together
+├── config/
+│   └── review-models.md                   # ⚙️ AI models for multi-model review (update here)
 ├── instructions/
 │   ├── general.instructions.md            # Language-agnostic coding guidelines
 │   └── code-review.instructions.md        # Review criteria & severity levels (auto-applied by /review)
@@ -117,7 +125,7 @@ Two-part code review system:
 
 1. **Review criteria** (`.github/instructions/code-review.instructions.md`) — automatically applied during every `/review` pass. Defines 7 review categories and 4 severity levels so each model evaluates against consistent standards.
 
-2. **Synthesis skill** (`.github/skills/code-review/SKILL.md`) — run after `/review using codex 5.3, opus 4.6, gemini 3 pro` to consolidate the three independent passes into a deduplicated, confidence-scored, prioritized report.
+2. **Synthesis skill** (`.github/skills/code-review/SKILL.md`) — run after a multi-model `/review` (using models from `.github/config/review-models.md`) to consolidate the independent passes into a deduplicated, confidence-scored, prioritized report.
 
 ### Skill: `/reference-lookup`
 

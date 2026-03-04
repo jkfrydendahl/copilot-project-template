@@ -2,13 +2,13 @@
 
 **Goal**: Understand existing code patterns, discover business rules, consult references, ask clarifying questions.
 
-> **Critical rule**: Clarifying questions and the phase transition gate must **never** be combined in the same `ask_questions` call. The user must see the updated Business Rules output before being asked to proceed.
+> **Critical rule**: Clarifying questions and the phase transition gate must **never** be combined in the same prompt. The user must see the updated Business Rules output before being asked to proceed.
 
 ## Stage A: Research
 
 ### 1. Explore Codebase
 
-Use `search_subagent` for all codebase exploration. Launch **parallel** subagents for independent searches:
+Search the codebase for relevant patterns. Launch **parallel** searches for independent queries:
 
 - Search for similar modules/components matching feature keywords
 - Find event/hook patterns: middleware, interceptors, observers, event handlers
@@ -17,7 +17,7 @@ Use `search_subagent` for all codebase exploration. Launch **parallel** subagent
 
 ### 2. Consult References
 
-Use `runSubagent` to gather guidance on patterns, APIs, error handling, and validation approaches from:
+Gather guidance on patterns, APIs, error handling, and validation approaches from:
 - Project documentation and existing patterns
 - External reference sources (configured via `/reference-lookup` skill)
 - Framework/library documentation
@@ -25,7 +25,7 @@ Use `runSubagent` to gather guidance on patterns, APIs, error handling, and vali
 
 ### 3. Read Key Files
 
-Use `runSubagent` or `read_file` (via subagent) to read implementation details of discovered files and understand patterns and conventions.
+Read implementation details of discovered files to understand patterns and conventions.
 
 ## Stage B: Clarify (loop)
 
@@ -45,7 +45,7 @@ Present this draft to the user.
 
 ### 5. Ask Clarifying Questions
 
-Ask clarifying questions with project-specific focus using `ask_questions`. These questions should be about the **requirements and design**, not about proceeding.
+Ask the user clarifying questions with project-specific focus. These questions should be about the **requirements and design**, not about proceeding.
 
 **Standard Questions:**
 - "Does this need to integrate with existing middleware/hooks/event systems?"
@@ -64,9 +64,9 @@ After the user answers clarifying questions:
 
 1. **Update** the Business Rules table — add/modify/remove rules based on answers
 2. **Re-present** the updated Business Rules table to the user
-3. Use `ask_questions` to check if more clarification is needed:
+3. Ask the user if more clarification is needed:
 
-- **`ask_questions`** (header: `Clarify`, question: "I've updated the business rules based on your answers. Are the business rules complete?"):
+- **Ask the user** (header: `Clarify`, question: "I've updated the business rules based on your answers. Are the business rules complete?"):
   - **Business rules are complete** (recommended) — Finalize and proceed to output
   - **I have corrections** — User provides corrections, loop back to step 6
   - **Ask me more questions** — Agent asks additional questions, loop back to step 5
@@ -93,9 +93,9 @@ Use this structure:
 
 ### 8. Transition Gate
 
-**Only after** the final Business Rules have been presented, use a **separate** `ask_questions` call to gate the transition:
+**Only after** the final Business Rules have been presented, use a **separate** prompt to gate the transition:
 
-- **`ask_questions`** (header: `Phase 2`, question: "Business rules analysis complete. Ready to proceed to architecture design?"):
+- **Ask the user** (header: `Phase 2`, question: "Business rules analysis complete. Ready to proceed to architecture design?"):
   - **Proceed to Architecture** (recommended) — Continue to Phase 3
   - **Revise business rules** — Go back to Stage B
 

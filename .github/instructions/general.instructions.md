@@ -34,8 +34,5 @@ After completing a feature or non-trivial change, **perform a self-review** of y
 
 After the self-review, suggest the user run a multi-model review for deeper coverage:
 
-> For additional coverage with multiple AI models, run:
-> ```
-> /review using codex 5.3, opus 4.6, gemini 3 pro
-> ```
+> For additional coverage with multiple AI models, run the `/review` command with the models listed in `.github/config/review-models.md`.
 > Then ask Copilot to synthesize the findings using the code-review-synthesis skill.

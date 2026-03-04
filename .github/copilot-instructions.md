@@ -35,6 +35,6 @@ Use after planning is complete to implement features with strict test-first disc
 See `.github/skills/tdd-implement/SKILL.md`.
 
 ### `/review` (Multi-Model Code Review)
-Run `/review using codex 5.3, opus 4.6, gemini 3 pro` for multi-model review passes.
+Run multi-model review using the models configured in `.github/config/review-models.md`.
 Review criteria and severity levels are defined in `.github/instructions/code-review.instructions.md` and applied automatically.
 After review, use the synthesis skill to consolidate findings: see `.github/skills/code-review/SKILL.md`.
