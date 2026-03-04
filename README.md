@@ -19,9 +19,10 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
 
 ### After Copying
 
-1. **Configure reference sources** — Edit `.github/skills/reference-lookup/references/sources.md` with your project's reference repos, docs, and API specs. The file ships with examples only.
-2. **Review model configuration** — Check `.github/config/review-models.md` and update the AI models if newer ones are available.
-3. **Add language-specific instructions** (optional) — Create files like `typescript.instructions.md` or `python.instructions.md` in `.github/instructions/` for language-specific guidelines.
+1. **Check for existing Copilot config** — If your project already has `.github/copilot-instructions.md`, merge the router content rather than overwriting it.
+2. **Configure reference sources** — Edit `.github/skills/reference-lookup/references/sources.md` with your project's reference repos, docs, and API specs. The file ships with examples only.
+3. **Review model configuration** — Check `.github/config/review-models.md` and update the AI models if newer ones are available.
+4. **Add language-specific instructions** (optional) — Create files like `typescript.instructions.md` or `python.instructions.md` in `.github/instructions/` for language-specific guidelines.
 
 ## What's Included
 
@@ -170,6 +171,23 @@ Create new skill folders in `.github/skills/` following the same pattern:
 ├── SKILL.md           # Skill definition with name, description, procedure
 └── references/        # Supporting reference files
 ```
+
+## Updating
+
+If you copied this template into an existing project and want to pull in updates later:
+
+```bash
+# Add the template as a remote
+git remote add copilot-template https://github.com/jkfrydendahl/copilot-project-template.git
+
+# Fetch and review changes
+git fetch copilot-template
+git diff HEAD...copilot-template/main -- .github/ .copilot-commit-message-instructions.md
+
+# Cherry-pick or manually merge the changes you want
+```
+
+Alternatively, compare your local files against the latest release and manually apply relevant changes.
 
 ## License
 
