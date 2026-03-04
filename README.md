@@ -29,6 +29,15 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
 └── skills/
     ├── code-review/                       # Multi-model review synthesis
     │   └── SKILL.md                       # Synthesis protocol (post-/review)
+    ├── tdd-implement/                     # TDD implementation workflow
+    │   ├── SKILL.md                       # Skill definition & TDD discipline
+    │   ├── phases/
+    │   │   ├── phase-1-setup.md           # Branch + draft PR setup
+    │   │   ├── phase-2-implementation.md  # Red-Green-Refactor TDD cycles
+    │   │   └── phase-3-review.md          # Self-review, finalize PR
+    │   └── references/
+    │       ├── pr-template.md             # PR description as state machine
+    │       └── resume.md                  # Resume from existing PR logic
     ├── refine-requirements/               # Requirements → Architecture → Test Plan
     │   ├── SKILL.md                       # Skill definition & invocation
     │   ├── phases/
@@ -85,6 +94,22 @@ A 4-phase workflow for analyzing work items before implementation:
 | **4. Test Plan** | Write test scenarios using ZOMBIES methodology | Test plan with scenarios |
 
 Each phase has a **user checkpoint** — Copilot won't proceed until you approve. The final output is a single Markdown block you can paste into your work tracking tool.
+
+### Skill: `/tdd-implement`
+
+A 3-phase TDD implementation workflow that picks up where `/refine-requirements` leaves off:
+
+| Phase | Focus | Output |
+|-------|-------|--------|
+| **1. Setup** | Create feature branch and draft PR | PR with Architecture, Test Plan, and Progress table |
+| **2. Implementation** | Red-Green-Refactor cycles per scenario | Production code + tests, progress tracked in PR |
+| **3. Review** | Self-review, finalize PR | Ready-for-review PR with implementation summary |
+
+Key features:
+- **Three Laws of TDD** enforced — no production code without a failing test
+- **ZOMBIES ordering** — scenarios processed Zero → One → Many → Boundary → Interface → Exception
+- **PR as state machine** — progress table enables resuming from any point
+- **Execution verification** — confirms tests actually hit the intended code paths
 
 ### Skill: `/review` (Multi-Model Code Review)
 

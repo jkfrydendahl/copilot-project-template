@@ -29,6 +29,11 @@ Look up patterns, APIs, and implementations in external codebases and documentat
 Configure project-specific sources in `.github/skills/reference-lookup/references/sources.md`.
 See `.github/skills/reference-lookup/SKILL.md`.
 
+### `/tdd-implement`
+TDD implementation workflow: Setup → Red-Green-Refactor cycles → Review.
+Use after planning is complete to implement features with strict test-first discipline.
+See `.github/skills/tdd-implement/SKILL.md`.
+
 ### `/review` (Multi-Model Code Review)
 Run `/review using codex 5.3, opus 4.6, gemini 3 pro` for multi-model review passes.
 Review criteria and severity levels are defined in `.github/instructions/code-review.instructions.md` and applied automatically.

@@ -19,6 +19,7 @@ Use the project's existing build and test commands (e.g., `make`, `npm run build
 # Available Skills
 
 - Use `/refine-requirements` to analyze and plan work items before implementation.
+- Use `/tdd-implement` to implement features using TDD after planning is complete.
 - Use `/reference-lookup` to find patterns, APIs, or implementations in external codebases and documentation.
 
 # Post-Implementation Review
