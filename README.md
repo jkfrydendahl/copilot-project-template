@@ -22,9 +22,12 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
 ```
 .copilot-commit-message-instructions.md    # Commit message conventions
 .github/
+├── copilot-instructions.md                # 🔀 Top-level router — ties everything together
 ├── instructions/
 │   └── general.instructions.md            # Language-agnostic coding guidelines
 └── skills/
+    ├── code-review/                       # Multi-model code review protocol
+    │   └── SKILL.md                       # Review criteria, models, synthesis
     ├── refine-requirements/               # Requirements → Architecture → Test Plan
     │   ├── SKILL.md                       # Skill definition & invocation
     │   ├── phases/
@@ -42,6 +45,12 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
 ```
 
 ## Components
+
+### Copilot Instructions Router
+
+**File:** `.github/copilot-instructions.md`
+
+Top-level configuration file that Copilot reads automatically. Routes to all coding guidelines, commit conventions, and available skills — ensuring Copilot picks up the full framework regardless of client.
 
 ### Commit Message Instructions
 
@@ -75,6 +84,19 @@ A 4-phase workflow for analyzing work items before implementation:
 | **4. Test Plan** | Write test scenarios using ZOMBIES methodology | Test plan with scenarios |
 
 Each phase has a **user checkpoint** — Copilot won't proceed until you approve. The final output is a single Markdown block you can paste into your work tracking tool.
+
+### Skill: `/review` (Multi-Model Code Review)
+
+A prescriptive code review protocol using three diverse AI models:
+
+```
+/review using codex 5.3, opus 4.6, gemini 3 pro
+```
+
+- **3 independent passes** — GPT-5.3-Codex, Claude Opus 4.6, Gemini 3 Pro each review the full changeset
+- **7 review categories** — Correctness, Security, Performance, Error Handling, Design, Maintainability, Breaking Changes
+- **Confidence scoring** — Findings flagged by 3/3 models = high confidence, 2/3 = medium, 1/3 = low (but potentially the most valuable catch)
+- **Synthesis protocol** — Deduplicate, score, prioritize, and output a consolidated report
 
 ### Skill: `/reference-lookup`
 
