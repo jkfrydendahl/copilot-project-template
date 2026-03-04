@@ -13,6 +13,9 @@ git clone https://github.com/jkfrydendahl/copilot-project-template.git
 # Copy into your project (adjust path)
 cp copilot-project-template/.copilot-commit-message-instructions.md your-project/
 cp -r copilot-project-template/.github your-project/
+
+# Optional: copy Docker test runner
+cp -r copilot-project-template/docker your-project/
 ```
 
 Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template) when creating new repositories.
@@ -21,8 +24,9 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
 
 1. **Check for existing Copilot config** — If your project already has `.github/copilot-instructions.md`, merge the router content rather than overwriting it.
 2. **Configure reference sources** — Edit `.github/skills/reference-lookup/references/sources.md` with your project's reference repos, docs, and API specs. The file ships with examples only.
-3. **Review model configuration** — Check `.github/config/review-models.md` and update the AI models if newer ones are available.
-4. **Add language-specific instructions** (optional) — Create files like `typescript.instructions.md` or `python.instructions.md` in `.github/instructions/` for language-specific guidelines.
+3. **Configure test runner** — Edit `.github/config/test-runner.md` with your project's test commands. Switch to Docker mode if using containerized tests.
+4. **Review model configuration** — Check `.github/config/review-models.md` and update the AI models if newer ones are available.
+5. **Add language-specific instructions** (optional) — Create files like `typescript.instructions.md` or `python.instructions.md` in `.github/instructions/` for language-specific guidelines.
 
 ## What's Included
 
@@ -31,7 +35,8 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
 .github/
 ├── copilot-instructions.md                # Top-level router — ties everything together
 ├── config/
-│   └── review-models.md                   # AI models for multi-model review (update here)
+│   ├── review-models.md                   # AI models for multi-model review (update here)
+│   └── test-runner.md                     # Test execution config: local or Docker
 ├── instructions/
 │   ├── general.instructions.md            # Language-agnostic coding guidelines
 │   └── code-review.instructions.md        # Review criteria & severity levels (auto-applied by /review)
@@ -61,6 +66,14 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
         └── references/
             ├── sources.md                 # Configure your reference sources here
             └── search-patterns.md         # Tool-agnostic search heuristics
+docker/                                    # (Optional) Docker test runner
+├── docker-compose.test.yml                # Template — customize for your project
+└── examples/
+    ├── node.yml                           # Node.js test runner
+    ├── python.yml                         # Python test runner
+    ├── dotnet.yml                         # .NET test runner
+    ├── go.yml                             # Go test runner
+    └── al-bc.yml                          # AL / Business Central test runner
 ```
 
 ## Components
@@ -135,6 +148,16 @@ A configurable skill for exploring external codebases, documentation, and APIs:
 1. **Configure sources** — edit `references/sources.md` with your project's reference repos, docs, and API specs
 2. **Use the skill** — Copilot follows a structured procedure: identify sources → search → inspect → cross-check
 3. **Get results** — file paths, function signatures, hook points, and recommended patterns
+
+### Docker Test Runner (Optional)
+
+Run tests inside Docker containers for consistent, reproducible test execution across environments. The TDD skill automatically uses Docker when configured.
+
+1. **Configure** — Edit `.github/config/test-runner.md` to switch from Local to Docker mode
+2. **Set up** — Copy an example from `docker/examples/` to `docker/docker-compose.test.yml` and customize
+3. **Run** — `docker compose -f docker/docker-compose.test.yml run --rm test`
+
+Pre-built examples for: **Node.js**, **Python**, **.NET**, **Go**, and **AL/Business Central**.
 
 ## Customization
 

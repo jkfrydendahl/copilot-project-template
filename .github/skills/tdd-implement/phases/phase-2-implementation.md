@@ -28,9 +28,10 @@ Do NOT reorder scenarios without documenting why. The order is intentional — i
 
 ### Pre-Flight (Required)
 
-1. Confirm no temporary debug/logging artifacts exist at task start.
-2. Verify the project builds and existing tests pass.
-3. Create a mental or written checklist for the Red/Green/Refactor cycle.
+1. **Read test runner config**: Check `.github/config/test-runner.md` for the project's test execution mode (Local or Docker) and commands. Use these commands for all test execution throughout this phase.
+2. Confirm no temporary debug/logging artifacts exist at task start.
+3. Verify the project builds and existing tests pass using the configured test command.
+4. If Docker mode: verify Docker is running and the test container starts successfully.
 
 ### For Each Scenario (or batch of related scenarios):
 
