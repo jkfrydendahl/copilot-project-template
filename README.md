@@ -28,9 +28,9 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
 ```
 .copilot-commit-message-instructions.md    # Commit message conventions
 .github/
-├── copilot-instructions.md                # 🔀 Top-level router — ties everything together
+├── copilot-instructions.md                # Top-level router — ties everything together
 ├── config/
-│   └── review-models.md                   # ⚙️ AI models for multi-model review (update here)
+│   └── review-models.md                   # AI models for multi-model review (update here)
 ├── instructions/
 │   ├── general.instructions.md            # Language-agnostic coding guidelines
 │   └── code-review.instructions.md        # Review criteria & severity levels (auto-applied by /review)
@@ -58,7 +58,7 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
     └── reference-lookup/                  # External codebase & docs lookup
         ├── SKILL.md                       # Skill definition & procedure
         └── references/
-            ├── sources.md                 # ⚙️ Configure your reference sources here
+            ├── sources.md                 # Configure your reference sources here
             └── search-patterns.md         # Tool-agnostic search heuristics
 ```
 
