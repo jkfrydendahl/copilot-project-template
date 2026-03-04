@@ -112,3 +112,13 @@ Use the structure from the [Output Template](../references/work-item-template.md
 This is the **only code block** in the entire workflow. Present it with a brief message: "Here is the complete planning output ready to copy into your work tracking tool."
 
 After producing the combined output, the planning workflow is complete. If an implementation workflow exists in your environment, proceed with it.
+
+### 10. Review Reminder
+
+After the final output, remind the user:
+
+> **After implementation**, run a multi-model code review to validate the changes:
+> ```
+> /review using codex 5.3, opus 4.6, gemini 3 pro
+> ```
+> Then ask Copilot to synthesize the findings into a prioritized report.
