@@ -23,10 +23,18 @@ Use the project's existing build and test commands (e.g., `make`, `npm run build
 
 # Post-Implementation Review
 
-After completing a feature or non-trivial change, remind the user to run a multi-model code review:
+After completing a feature or non-trivial change, **perform a self-review** of your own changes before returning to the user:
 
-```
-/review using codex 5.3, opus 4.6, gemini 3 pro
-```
+1. Analyze the diff of all changes made during this task
+2. Evaluate against the review criteria in `.github/instructions/code-review.instructions.md`
+3. Classify any findings by severity (🔴 Critical, 🟠 Warning, 🟡 Suggestion, ℹ️ Note)
+4. If Critical or Warning findings are found, fix them before presenting the work to the user
+5. Present a brief review summary alongside the completed work
 
-After the review passes complete, offer to synthesize the findings into a consolidated report using the code-review-synthesis skill.
+After the self-review, suggest the user run a multi-model review for deeper coverage:
+
+> For additional coverage with multiple AI models, run:
+> ```
+> /review using codex 5.3, opus 4.6, gemini 3 pro
+> ```
+> Then ask Copilot to synthesize the findings using the code-review-synthesis skill.

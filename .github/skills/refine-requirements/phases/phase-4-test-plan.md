@@ -115,9 +115,11 @@ After producing the combined output, the planning workflow is complete. If an im
 
 ### 10. Review Reminder
 
-After the final output, remind the user:
+After the final output, remind the user of the two-step review process:
 
-> **After implementation**, run a multi-model code review to validate the changes:
+> **After implementation**, Copilot will automatically self-review the changes against the project's review criteria and fix any critical/warning issues before presenting the work.
+>
+> For deeper coverage with multiple AI models, run:
 > ```
 > /review using codex 5.3, opus 4.6, gemini 3 pro
 > ```
