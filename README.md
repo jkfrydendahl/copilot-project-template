@@ -24,10 +24,11 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
 .github/
 ├── copilot-instructions.md                # 🔀 Top-level router — ties everything together
 ├── instructions/
-│   └── general.instructions.md            # Language-agnostic coding guidelines
+│   ├── general.instructions.md            # Language-agnostic coding guidelines
+│   └── code-review.instructions.md        # Review criteria & severity levels (auto-applied by /review)
 └── skills/
-    ├── code-review/                       # Multi-model code review protocol
-    │   └── SKILL.md                       # Review criteria, models, synthesis
+    ├── code-review/                       # Multi-model review synthesis
+    │   └── SKILL.md                       # Synthesis protocol (post-/review)
     ├── refine-requirements/               # Requirements → Architecture → Test Plan
     │   ├── SKILL.md                       # Skill definition & invocation
     │   ├── phases/
@@ -87,16 +88,11 @@ Each phase has a **user checkpoint** — Copilot won't proceed until you approve
 
 ### Skill: `/review` (Multi-Model Code Review)
 
-A prescriptive code review protocol using three diverse AI models:
+Two-part code review system:
 
-```
-/review using codex 5.3, opus 4.6, gemini 3 pro
-```
+1. **Review criteria** (`.github/instructions/code-review.instructions.md`) — automatically applied during every `/review` pass. Defines 7 review categories and 4 severity levels so each model evaluates against consistent standards.
 
-- **3 independent passes** — GPT-5.3-Codex, Claude Opus 4.6, Gemini 3 Pro each review the full changeset
-- **7 review categories** — Correctness, Security, Performance, Error Handling, Design, Maintainability, Breaking Changes
-- **Confidence scoring** — Findings flagged by 3/3 models = high confidence, 2/3 = medium, 1/3 = low (but potentially the most valuable catch)
-- **Synthesis protocol** — Deduplicate, score, prioritize, and output a consolidated report
+2. **Synthesis skill** (`.github/skills/code-review/SKILL.md`) — run after `/review using codex 5.3, opus 4.6, gemini 3 pro` to consolidate the three independent passes into a deduplicated, confidence-scored, prioritized report.
 
 ### Skill: `/reference-lookup`
 

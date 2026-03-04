@@ -10,6 +10,7 @@ This project uses a structured Copilot framework with coding instructions, commi
 
 Follow the guidelines in `.github/instructions/`:
 - `general.instructions.md` — Language-agnostic coding standards (always active)
+- `code-review.instructions.md` — Review criteria and severity levels (applied automatically during `/review`)
 - Add language-specific files (e.g., `typescript.instructions.md`) as needed
 
 ## Commit Conventions
@@ -29,6 +30,6 @@ Configure project-specific sources in `.github/skills/reference-lookup/reference
 See `.github/skills/reference-lookup/SKILL.md`.
 
 ### `/review` (Multi-Model Code Review)
-Run three independent review passes using diverse AI models, then synthesize into a prioritized report.
-Invoke with: `/review using codex 5.3, opus 4.6, gemini 3 pro`
-See `.github/skills/code-review/SKILL.md`.
+Run `/review using codex 5.3, opus 4.6, gemini 3 pro` for multi-model review passes.
+Review criteria and severity levels are defined in `.github/instructions/code-review.instructions.md` and applied automatically.
+After review, use the synthesis skill to consolidate findings: see `.github/skills/code-review/SKILL.md`.
