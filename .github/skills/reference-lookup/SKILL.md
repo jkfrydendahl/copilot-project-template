@@ -50,9 +50,9 @@ Use official documentation to confirm syntax, concepts, and best practices that 
 - Hook/event/middleware signature and location
 - A recommended integration point or reference pattern
 
-## Subagent Exploration (Optional)
+## Delegated Exploration (Optional)
 
-For open-ended questions, delegate to a subagent with a focused brief:
+For open-ended questions, delegate research to a subagent or background task with a focused brief:
 
 ```
 Search [reference source] for [topic]. Identify candidate files, inspect implementations, and report back with relevant patterns, APIs, and example locations.

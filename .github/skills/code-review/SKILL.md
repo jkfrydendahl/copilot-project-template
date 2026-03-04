@@ -55,15 +55,15 @@ Present the synthesized report:
 ## Code Review Summary
 
 **Changeset**: [PR/branch description]
-**Models Used**: GPT-5.3-Codex, Claude Opus 4.6, Gemini 3 Pro
+**Models Used**: [List models from .github/config/review-models.md]
 
 ### Findings
 
 | # | Severity | Category | Finding | Confidence | Models | File(s) |
 |---|----------|----------|---------|------------|--------|---------|
 | 1 | 🔴 Critical | Security | [Description] | High (3/3) | All | `src/auth.ts:42` |
-| 2 | 🟠 Warning | Performance | [Description] | Medium (2/3) | Codex, Gemini | `src/db.ts:88` |
-| 3 | 🟡 Suggestion | Design | [Description] | Low (1/3) | Opus | `src/service.ts:15` |
+| 2 | 🟠 Warning | Performance | [Description] | Medium (2/3) | [Model A], [Model C] | `src/db.ts:88` |
+| 3 | 🟡 Suggestion | Design | [Description] | Low (1/3) | [Model B] | `src/service.ts:15` |
 
 ### Details
 

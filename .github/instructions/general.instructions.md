@@ -24,9 +24,18 @@ Use the project's existing build and test commands (e.g., `make`, `npm run build
 
 # Available Skills
 
-- Use `/refine-requirements` to analyze and plan work items before implementation.
-- Use `/tdd-implement` to implement features using TDD after planning is complete.
-- Use `/reference-lookup` to find patterns, APIs, or implementations in external codebases and documentation.
+Choose the right workflow for the task:
+
+| Task Size | Approach |
+|-----------|----------|
+| **Trivial** (typos, config changes, one-line fixes) | Implement directly — follow Code Quality guidelines above |
+| **Small** (bug fixes, minor features, localized changes) | Implement directly with tests — self-review will catch issues |
+| **Medium–Large** (new features, multi-file changes, design decisions) | Use `/refine-requirements` → `/tdd-implement` for the full workflow |
+
+**Skills:**
+- `/refine-requirements` — Analyze and plan work items before implementation (4 phases)
+- `/tdd-implement` — Implement features using TDD after planning is complete (3 phases)
+- `/reference-lookup` — Find patterns, APIs, or implementations in external codebases and documentation
 
 # Post-Implementation Review
 
