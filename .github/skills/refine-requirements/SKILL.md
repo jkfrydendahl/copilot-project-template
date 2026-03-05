@@ -5,7 +5,7 @@ description: "Requirements refinement workflow. Produce architecture + test plan
 
 # Work Item Refinement
 
-4-phase workflow for analyzing work items and producing architecture designs + **manual** test plans. During the workflow, deliverables are rendered as normal Markdown with visual Mermaid diagrams. After approval, a single combined code block is produced for the user to copy into their work tracking tool.
+4-phase workflow for analyzing work items and producing architecture designs + test plans. During the workflow, deliverables are rendered as normal Markdown with visual Mermaid diagrams. After approval, a single combined code block is produced for the user to copy into their work tracking tool.
 
 > **Note**: This skill handles planning only. For implementation, use your implementation workflow after planning is complete.
 
