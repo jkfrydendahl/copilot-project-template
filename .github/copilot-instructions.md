@@ -15,7 +15,12 @@ Follow the guidelines in `.github/instructions/`:
 
 ## Commit Conventions
 
-Follow the conventions in `.copilot-commit-message-instructions.md` when generating commit messages. Use conventional commit format with Business Context, Technical Changes, Implementation Details, and Impact sections.
+Follow the conventions in `.copilot-commit-message-instructions.md` when generating commit messages. Use standard format (type + summary + optional body) for most commits; use extended format (with Business Context, Technical Changes, Implementation Details, and Impact sections) for significant features or breaking changes.
+
+## Configuration
+
+- `.github/config/review-models.md` — AI models for multi-model code review (update when better models are available)
+- `.github/config/test-runner.md` — Test execution mode (Local or Docker) and commands (read by TDD skill automatically)
 
 ## Available Skills
 
