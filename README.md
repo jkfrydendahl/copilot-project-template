@@ -1,6 +1,6 @@
 # Copilot Project Template
 
-A language-agnostic GitHub Copilot framework template you can drop into any development project. Provides structured workflows for requirements planning, TDD implementation, multi-model code review, and commit conventions — all tool-agnostic and customizable.
+A language-agnostic GitHub Copilot framework template you can drop into any development project. Provides structured workflows for requirements planning, task estimation, TDD implementation, multi-model code review, and commit conventions — all tool-agnostic and customizable.
 
 ## Quick Start
 
@@ -61,6 +61,10 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
     │   │   └── phase-4-test-plan.md       # Write test plan, produce final output
     │   └── references/
     │       └── work-item-template.md      # Output template for work tracking tools
+    ├── estimate-task/                     # Interactive task estimation
+    │   ├── SKILL.md                       # Skill definition & estimation workflow
+    │   └── references/
+    │       └── framework.md               # 6-dimension scoring model & hour mapping
     └── reference-lookup/                  # External codebase & docs lookup
         ├── SKILL.md                       # Skill definition & procedure
         └── references/
@@ -140,6 +144,19 @@ Two-part code review system:
 1. **Review criteria** (`.github/instructions/code-review.instructions.md`) — automatically applied during every `/review` pass. Defines 7 review categories and 4 severity levels so each model evaluates against consistent standards.
 
 2. **Synthesis skill** (`.github/skills/code-review/SKILL.md`) — run after a multi-model `/review` (using models from `.github/config/review-models.md`) to consolidate the independent passes into a deduplicated, confidence-scored, prioritized report.
+
+### Skill: `/estimate-task`
+
+Interactive estimation workflow for development tasks:
+
+| Phase | Focus | Output |
+|-------|-------|--------|
+| **1. Context Gathering** | Collect task description and project context | Task + familiarity level |
+| **2. Clarifying Questions** | Ask mandatory questions before scoring | Resolved ambiguities |
+| **3. Scoring & Estimation** | Score 6 dimensions, map to hours, apply adjustments | Composite score + hour range |
+| **4. Delivery** | Present structured estimate | Three-point estimate (P20/P50/P80) |
+
+Uses a 6-dimension scoring model (Scope, Uncertainty, Technical Complexity, Dependencies, Testing, Familiarity) with a non-linear piecewise hour mapping. Ships with a default baseline — calibrate against your own historical data for best results.
 
 ### Skill: `/reference-lookup`
 

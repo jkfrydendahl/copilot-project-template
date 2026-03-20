@@ -39,6 +39,11 @@ TDD implementation workflow: Setup → Red-Green-Refactor cycles → Review.
 Use after planning is complete to implement features with strict test-first discipline.
 See `.github/skills/tdd-implement/SKILL.md`.
 
+### `/estimate-task`
+Interactive task estimation: Context Gathering → Clarifying Questions → Scoring → Delivery.
+Produces a calibrated three-point estimate (optimistic / likely / pessimistic) using a 6-dimension scoring model.
+See `.github/skills/estimate-task/SKILL.md`.
+
 ### `/review` (Multi-Model Code Review)
 Run multi-model review using the models configured in `.github/config/review-models.md`.
 Review criteria and severity levels are defined in `.github/instructions/code-review.instructions.md` and applied automatically.
