@@ -64,7 +64,7 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
     ├── estimate-task/                     # Interactive task estimation
     │   ├── SKILL.md                       # Skill definition & estimation workflow
     │   └── references/
-    │       └── framework.md               # 6-dimension scoring model & hour mapping
+    │       └── estimation-framework.md     # 6-dimension scoring model & hour mapping
     └── reference-lookup/                  # External codebase & docs lookup
         ├── SKILL.md                       # Skill definition & procedure
         └── references/

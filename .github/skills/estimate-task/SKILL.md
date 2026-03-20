@@ -42,7 +42,7 @@ This skill requires the **Task Estimation Framework** document as context. The f
 - Task archetypes with historical hour ranges
 - Anti-patterns from blind and live testing
 
-Reference: [framework.md](./references/framework.md)
+Reference: [estimation-framework.md](./references/estimation-framework.md)
 
 ## Workflow
 
