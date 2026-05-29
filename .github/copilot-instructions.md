@@ -44,6 +44,14 @@ Interactive task estimation: Context Gathering → Clarifying Questions → Scor
 Produces a calibrated three-point estimate (optimistic / likely / pessimistic) using a 6-dimension scoring model.
 See `.github/skills/estimate-task/SKILL.md`.
 
+### `/create-release`
+Create a release branch by merging feature branches and bumping the version.
+Supports task IDs, branch names, and auto-detects versioning (app.json, package.json, VERSION, .csproj).
+See `.github/skills/create-release/SKILL.md`.
+
+### `/grill-me`
+Stress-test a plan or design. Copilot interviews you relentlessly, walking down each branch of the decision tree one question at a time until reaching shared understanding. Questions that can be answered by exploring the codebase are resolved automatically.
+
 ### `/review` (Multi-Model Code Review)
 Run multi-model review using the models configured in `.github/config/review-models.md`.
 Review criteria and severity levels are defined in `.github/instructions/code-review.instructions.md` and applied automatically.

@@ -36,6 +36,7 @@ Choose the right workflow for the task:
 - `/refine-requirements` — Analyze and plan work items before implementation (4 phases)
 - `/tdd-implement` — Implement features using TDD after planning is complete (3 phases)
 - `/reference-lookup` — Find patterns, APIs, or implementations in external codebases and documentation
+- `/create-release` — Create a release branch by merging feature branches and bumping the version
 
 # Post-Implementation Review
 
