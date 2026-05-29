@@ -26,7 +26,40 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
 2. **Configure reference sources** — Edit `.github/skills/reference-lookup/references/sources.md` with your project's reference repos, docs, and API specs. The file ships with examples only.
 3. **Configure test runner** — Edit `.github/config/test-runner.md` with your project's test commands. Switch to Docker mode if using containerized tests.
 4. **Review model configuration** — Check `.github/config/review-models.md` and update the AI models if newer ones are available.
-5. **Add language-specific instructions** (optional) — Create files like `typescript.instructions.md` or `python.instructions.md` in `.github/instructions/` for language-specific guidelines.
+5. **Set up Context7** (optional) — Run `npx ctx7 setup` to authenticate and enable live library documentation lookups via the `ctx7` CLI. See [context7.com](https://context7.com) for details.
+6. **Add language-specific instructions** (optional) — Create files like `typescript.instructions.md` or `python.instructions.md` in `.github/instructions/` for language-specific guidelines.
+
+## Recommended: Use Copilot in the CLI
+
+This framework is designed to work with any GitHub Copilot client — VS Code, JetBrains, the CLI, or the cloud agent. However, **the CLI is the recommended way to use these skills**, especially if your primary editor isn't VS Code.
+
+### Why the CLI?
+
+- **Editor-agnostic** — Works the same regardless of whether you develop in Visual Studio, Rider, Neovim, or any other editor. The skills, instructions, and workflows are fully available without needing a VS Code extension.
+- **Full agentic capabilities** — The CLI runs the same agentic model as VS Code Copilot Chat, including tool use (file editing, terminal commands, git operations), sub-agents, background tasks, and multi-step workflows.
+- **Skill invocation** — All skills in this toolbox (e.g., `/refine-requirements`, `/tdd-implement`, `/create-release`) are invoked as slash commands, which work identically in the CLI.
+- **Session persistence** — The CLI supports resumable sessions, so you can pause a planning or implementation workflow and pick it up later.
+- **Fleet mode** — Parallelise work by spawning multiple sub-agents that work simultaneously on independent tasks.
+- **No context-switching** — Stay in your terminal alongside your build tools, git, and other CLI utilities rather than switching between an editor and a chat panel.
+
+### Getting Started with the CLI
+
+```bash
+# Install (requires Node.js 18+)
+npm install -g @anthropic-ai/claude-code  # or use GitHub's installer
+# See: https://docs.github.com/copilot/how-tos/use-copilot-agents/use-copilot-cli
+
+# Run in your project directory
+copilot
+
+# View available skills from this toolbox
+/skills
+
+# Invoke a skill
+/refine-requirements
+```
+
+The CLI automatically reads `.github/copilot-instructions.md`, instruction files, and skill definitions — the same files this toolbox provides.
 
 ## What's Included
 
@@ -65,6 +98,14 @@ Or use this repo as a [GitHub template](https://docs.github.com/en/repositories/
     │   ├── SKILL.md                       # Skill definition & estimation workflow
     │   └── references/
     │       └── estimation-framework.md     # 6-dimension scoring model & hour mapping
+    ├── create-release/                    # Release branch workflow
+    │   ├── SKILL.md                       # Skill definition & release procedure
+    │   ├── Find-TaskBranches.ps1          # Branch lookup by task ID or name pattern
+    │   └── Prepare-Release.ps1            # Sync, merge, version bump in one call
+    ├── grill-me/                          # Plan/design stress-testing
+    │   └── SKILL.md                       # Interactive interrogation protocol
+    ├── update-readme/                     # README generation & updates
+    │   └── SKILL.md                       # Skill definition & project-type detection
     └── reference-lookup/                  # External codebase & docs lookup
         ├── SKILL.md                       # Skill definition & procedure
         └── references/
@@ -106,6 +147,7 @@ Structured conventional commit messages with:
 Language-agnostic guidelines for Copilot:
 - Build and test expectations
 - Code quality standards
+- Context7 integration for live library documentation
 - Pointers to available skills
 
 ### Skill: `/refine-requirements`
@@ -158,6 +200,39 @@ Interactive estimation workflow for development tasks:
 
 Uses a 6-dimension scoring model (Scope, Uncertainty, Technical Complexity, Dependencies, Testing, Familiarity) with a non-linear piecewise hour mapping. Ships with a default baseline — calibrate against your own historical data for best results.
 
+### Skill: `/create-release`
+
+Creates a release branch by merging feature branches and bumping the project version:
+
+1. **Identify branches** — accepts numeric task IDs (resolved via remote branch lookup) or direct branch names
+2. **Prepare release** — syncs main, creates `release/{version}` branch, merges all feature branches
+3. **Version bump** — auto-detects version file (`app.json`, `package.json`, `VERSION`, `.csproj`/`Directory.Build.props`)
+4. **Build** — auto-detects build system and verifies compilation
+5. **Push** — pushes the release branch with upstream tracking
+
+Invoke with `/create-release` followed by task IDs, branch names, or both. Optionally specify a version number.
+
+### Skill: `/grill-me`
+
+Stress-tests a plan or design by interrogating you about every aspect:
+
+- **One question at a time** — walks through each branch of the decision tree sequentially
+- **Recommends answers** — provides its own recommendation for each question
+- **Codebase-aware** — answers questions itself when the codebase holds the answer
+- **Converges** — continues until reaching shared understanding on all decisions
+
+Invoke with `/grill-me` after describing your plan or design, or say "grill me" in conversation.
+
+### Skill: `/update-readme`
+
+Generates or updates the project README with a consistent, tailored structure:
+
+1. **Auto-detects project type** — AL/Business Central, CRM/Dynamics 365, Power Platform, or generic
+2. **Explores the codebase** — scans source folders, manifests, and documentation
+3. **Generates sections** — Introduction, Feature Areas, and Documentation (dependencies, project docs, reference links)
+
+Invoke with `/update-readme` or `/update-readme <project type>` to override detection.
+
 ### Skill: `/reference-lookup`
 
 A configurable skill for exploring external codebases, documentation, and APIs:
@@ -165,6 +240,8 @@ A configurable skill for exploring external codebases, documentation, and APIs:
 1. **Configure sources** — edit `references/sources.md` with your project's reference repos, docs, and API specs
 2. **Use the skill** — Copilot follows a structured procedure: identify sources → search → inspect → cross-check
 3. **Get results** — file paths, function signatures, hook points, and recommended patterns
+
+Includes **Context7** as a preferred source for third-party library lookups — agents use `ctx7` CLI to fetch up-to-date, version-specific documentation directly into context.
 
 ### Docker Test Runner (Optional)
 
