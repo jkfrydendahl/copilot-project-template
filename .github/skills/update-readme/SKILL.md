@@ -117,7 +117,7 @@ Include clickable links to external documentation relevant to the project type.
 **AL / Business Central** (minimum):
 - [Microsoft AL Documentation](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-dev-overview)
 - [Business Central Extension Development](https://learn.microsoft.com/en-us/dynamics365/business-central/dev-itpro/developer/devenv-reference-overview)
-- [9A DevOps Wiki: Source Control and Dev Standards](https://dev.azure.com/Dynalogic/9A%20Intern/_wiki/wikis/9A-Intern.wiki/14/Source-Control-and-Development-Standards)
+
 
 **CRM / Dynamics 365** (minimum):
 - [Dataverse Developer Guide](https://learn.microsoft.com/en-us/power-apps/developer/data-platform/overview)
