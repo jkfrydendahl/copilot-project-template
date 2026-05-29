@@ -32,6 +32,12 @@ Check `references/sources.md` for configured reference repositories, documentati
 
 Search the configured repos or documentation using object/function/pattern names. Narrow by domain paths when possible. Your goal is to find the exact file or section that defines the behavior or publishes the event/hook.
 
+**Context7 (preferred for third-party libraries):** If you're looking up a well-known library or framework, use Context7 to fetch up-to-date, version-specific documentation:
+1. Find the library ID: `npx ctx7 library <name> "<query>"`
+2. Fetch docs: `npx ctx7 docs <libraryId> "<query>"`
+
+This is faster and more reliable than searching repository source code for library API details.
+
 ### Step 3: Inspect Implementation
 
 Open the candidate file/section and confirm:

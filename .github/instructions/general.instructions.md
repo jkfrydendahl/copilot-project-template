@@ -8,6 +8,24 @@ Do not assume knowledge of framework APIs, language features, or platform behavi
 
 Use `/reference-lookup` to find authoritative patterns when working with unfamiliar APIs or frameworks.
 
+## Context7 — Live Library Documentation
+
+When you need up-to-date documentation for a third-party library or framework, use the **Context7 CLI** (`ctx7`) to fetch version-specific docs and code examples directly into your context. This avoids hallucinated APIs and outdated training data.
+
+**Commands:**
+- `npx ctx7 docs <libraryId> "<query>"` — Fetch documentation for a known library (e.g., `npx ctx7 docs /vercel/next.js "middleware setup"`)
+- `npx ctx7 library <name> "<query>"` — Search for a library by name to find its Context7 ID
+
+**When to use:**
+- Writing code that depends on specific library APIs or configuration
+- Unsure about correct method signatures, options, or patterns for a dependency
+- Setting up or configuring a framework feature
+
+**Tips:**
+- If you already know the library ID (slash-path format like `/mongodb/docs`), use `ctx7 docs` directly to skip the search step
+- Mention a version in your query to get version-specific docs (e.g., `"Next.js 14 middleware"`)
+- Prefer Context7 over guessing or relying on potentially outdated knowledge
+
 # Build & Test
 
 Always build and test the project before returning results to the user. The build must complete with zero errors. If errors are reported, resolve them and rebuild until clean before responding.

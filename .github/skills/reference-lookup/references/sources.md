@@ -13,6 +13,10 @@ Add entries below for each reference source relevant to your project. Include:
 
 ## Sources
 
+| Name | Type | Location | Description |
+|------|------|----------|-------------|
+| Context7 | docs | `npx ctx7 docs <libraryId> "<query>"` | Up-to-date, version-specific library documentation via Context7 CLI. Use `npx ctx7 library <name> "<query>"` to find a library ID first. |
+
 <!-- Add your project-specific reference sources below -->
 
 | Name | Type | Location | Description |
