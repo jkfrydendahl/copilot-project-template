@@ -1,58 +1,29 @@
 ---
-description: Top-level Copilot instructions — routes to coding guidelines, skills, and conventions.
+description: Per-project Copilot configuration — commit conventions and test runner. Shared skills and workflow rules come from copilot-task-master.
 ---
 
 # Project Copilot Configuration
 
-This project uses a structured Copilot framework with coding instructions, commit conventions, and reusable skills.
+This repository carries only **project-specific** Copilot configuration. The shared workflow
+rules and reusable skills (`/refine-requirements`, `/tdd-implement`, `/grill-me`, `/review`,
+etc.) are provided globally by **[copilot-task-master](https://github.com/jkfrydendahl/copilot-task-master)**
+— its launcher injects the master instructions and links the skills into every repo. You do not
+need to copy those into this project.
 
-## Coding Instructions
+## What lives here
 
-Follow the guidelines in `.github/instructions/`:
-- `general.instructions.md` — Language-agnostic coding standards (always active)
-- `code-review.instructions.md` — Review criteria and severity levels (applied automatically during `/review`)
-- Add language-specific files (e.g., `typescript.instructions.md`) as needed
+- `.copilot-commit-message-instructions.md` — commit message conventions for this repo.
+- `.github/config/test-runner.md` — how tests are run here (Local or Docker) and the commands.
+  Read automatically by the shared `/tdd-implement` skill.
 
 ## Commit Conventions
 
-Follow the conventions in `.copilot-commit-message-instructions.md` when generating commit messages. Use standard format (type + summary + optional body) for most commits; use extended format (with Business Context, Technical Changes, Implementation Details, and Impact sections) for significant features or breaking changes.
+Follow the conventions in `.copilot-commit-message-instructions.md` when generating commit
+messages. Use the standard format (type + summary + optional body) for most commits; use the
+extended format (with Business Context, Technical Changes, Implementation Details, and Impact
+sections) for significant features or breaking changes.
 
-## Configuration
+## Language-specific guidance (optional)
 
-- `.github/config/review-models.md` — AI models for multi-model code review (update when better models are available)
-- `.github/config/test-runner.md` — Test execution mode (Local or Docker) and commands (read by TDD skill automatically)
-
-## Available Skills
-
-### `/refine-requirements`
-4-phase planning workflow: Discovery → Exploration → Architecture → Test Plan.
-Use before implementing any non-trivial feature or change.
-See `.github/skills/refine-requirements/SKILL.md`.
-
-### `/reference-lookup`
-Look up patterns, APIs, and implementations in external codebases and documentation.
-Configure project-specific sources in `.github/skills/reference-lookup/references/sources.md`.
-See `.github/skills/reference-lookup/SKILL.md`.
-
-### `/tdd-implement`
-TDD implementation workflow: Setup → Red-Green-Refactor cycles → Review.
-Use after planning is complete to implement features with strict test-first discipline.
-See `.github/skills/tdd-implement/SKILL.md`.
-
-### `/estimate-task`
-Interactive task estimation: Context Gathering → Clarifying Questions → Scoring → Delivery.
-Produces a calibrated three-point estimate (optimistic / likely / pessimistic) using a 6-dimension scoring model.
-See `.github/skills/estimate-task/SKILL.md`.
-
-### `/create-release`
-Create a release branch by merging feature branches and bumping the version.
-Supports task IDs, branch names, and auto-detects versioning (app.json, package.json, VERSION, .csproj).
-See `.github/skills/create-release/SKILL.md`.
-
-### `/grill-me`
-Stress-test a plan or design. Copilot interviews you relentlessly, walking down each branch of the decision tree one question at a time until reaching shared understanding. Questions that can be answered by exploring the codebase are resolved automatically.
-
-### `/review` (Multi-Model Code Review)
-Run multi-model review using the models configured in `.github/config/review-models.md`.
-Review criteria and severity levels are defined in `.github/instructions/code-review.instructions.md` and applied automatically.
-After review, use the synthesis skill to consolidate findings: see `.github/skills/code-review/SKILL.md`.
+Add files like `typescript.instructions.md` or `python.instructions.md` under
+`.github/instructions/` for language-specific rules that only apply to this project.
